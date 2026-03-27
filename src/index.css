@@ -89,18 +89,25 @@ body {
 
 .pagination {
   display: flex;
+  gap: 6px;
   justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
+  align-items: center;
+  margin: 30px 0;
 }
 
 .pagination button {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: 6px 10px;
+  background: #222;
   border: none;
+  color: white;
   cursor: pointer;
+  border-radius: 4px;
 }
 
-.pagination button:disabled {
-  cursor: default;
+.pagination button:hover {
+  background: #444;
+}
+
+.pagination .active {
+  background: #e50914;
 }

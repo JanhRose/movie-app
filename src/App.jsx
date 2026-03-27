@@ -35,7 +35,7 @@ function App() {
         const data = await response.json();
 
         setMovies(data.results);
-        setTotalPage(data.total_pages);
+        setTotalPage(Math.min(data.total_pages, 500));
       } catch (error) {
         console.error(error);
       } finally {
