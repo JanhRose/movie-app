@@ -111,3 +111,17 @@ body {
 .pagination .active {
   background: #e50914;
 }
+
+.error {
+  text-align: center;
+  color: red;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.no-results {
+  text-align: center;
+  color: #bbb;
+  font-size: 18px;
+  margin-top: 40px;
+}

@@ -16,12 +16,15 @@ function App() {
   //  aca se guardaran las peliculas
   const [movies, setMovies] = useState([]);
   //  lo que se mostrara mientras se cargan las peliculas
-  const [Loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  // manejo de errores
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchMovies() {
       try {
         setLoading(true);
+        setError(null);
 
         let url;
 
@@ -32,12 +35,18 @@ function App() {
         }
 
         const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new error("Api error");
+        }
+
         const data = await response.json();
 
         setMovies(data.results);
         setTotalPage(Math.min(data.total_pages, 500));
       } catch (error) {
-        console.error(error);
+        console.error(Error);
+        setError("failed to loading movies");
       } finally {
         setLoading(false);
       }
@@ -46,11 +55,32 @@ function App() {
     fetchMovies();
   }, [query, page]);
 
+  // si se encuentra cargando. muestra
+  if (loading) {
+    return <Loader />;
+  }
+
+  // evalua si tiene un error
+  if (error) {
+    return <p className="error"> {error} </p>;
+  }
+
+  // si no encuentra nada explica el porque
+  if (movies.length === 0) {
+    return (
+      <>
+        <SearchBar setQuery={setQuery} setPage={setPage} />
+        <p className="no-results">No movies found for: {query} </p>
+      </>
+    );
+  }
+
+  // si todo esta bien deberia devolver
   return (
     <>
       <main className="main">
         <SearchBar setQuery={setQuery} setPage={setPage} />
-        {Loading ? <Loader /> : <MovieList movies={movies} />}
+        <MovieList movies={movies} />
         <Pagination page={page} totalPages={totalPages} setPage={setPage} />
       </main>
     </>
