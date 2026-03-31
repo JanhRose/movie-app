@@ -87,6 +87,12 @@ body {
   display: block;
 }
 
+.movie-links {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .pagination {
   display: flex;
   gap: 6px;
@@ -124,4 +130,63 @@ body {
   color: #bbb;
   font-size: 18px;
   margin-top: 40px;
+}
+
+.movie-poster {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.movie-details {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.movie-info h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.movie-overview {
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.movie-rating {
+  font-weight: bold;
+  color: gold;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .movie-details {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .movie-poster {
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }

@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function Pagination({ page, totalPages, setPage }) {
   // funcionalidad para retrocedes la pagina
   function handlePrev() {
